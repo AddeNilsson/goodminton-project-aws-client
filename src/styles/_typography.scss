@@ -1,0 +1,14 @@
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-white { color: #fff; }
+.text-error { color: tomato; font-weight: 700; }
+
+.text-body {
+  letter-spacing: 0.015em;
+  line-height: 1.3;
+  color: rgba(0, 0, 0, .95);
+}
+.text-body-alt {
+  color: rgba(0, 0, 0, .55);
+  letter-spacing: 0.03em;
+}

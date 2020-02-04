@@ -1,0 +1,15 @@
+/**
+ * Boiler
+ */
+export const GET_DATA_REQUESTED = 'GET_DATA_REQUESTED';
+export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
+export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
+
+export const CLEAR_DATA = 'CLEAR_DATA';
+
+/**
+ * Auth
+ */
+export const LOGIN_USER_REQUESTED = 'LOGIN_USER_REQUESTED';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
