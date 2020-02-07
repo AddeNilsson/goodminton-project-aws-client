@@ -1,39 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import logo from '../../logo.svg';
-import { getData, clearData } from '../../actions/actions';
+
+import MaterialIcon from 'material-icons-react';
+
+import { Card, CardContent, CardImage } from '../../components/Card';
+import Grid from '../../components/Grid';
+import img from '../../assets/img/img.jpg';
+import Button from '../../components/Button';
+import IconButton from '../../components/IconButton';
+
 
 const Home =({ getData, mock, loading, clearData }) => {
-  const btnText = loading
-    ? 'Loading..'
-    : mock
-      ? 'Clear'
-      : 'Fetch';
-
-  const bgImage = mock
-    ? `url(${mock.sprites.front_default})`
-    : `url(${logo})`;
-
-  const handleClick = () => (mock ? clearData() : getData() );
-
+  const [isLoading, setIsLoading] = useState(false);
   return (
-    <div className="flex flex-center">
-      <div className="col-xs-12 col-md-4">
-        <div className='card'>
-          <div className="card-image" style={{ backgroundImage: bgImage }} />
-          <div className='card-content'>
-            <div className="">
-              <h2>Welcome</h2>
-              { mock ? mock.name : 'None' } has landed
-            </div>
-          </div>
-          <div className="card-content">
-            <button className="blue" onClick={handleClick}>{ btnText }</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Grid row classes="flex-center">
+      <Grid xs={12} sm={10} md={8} lg={6} xl={5}>
+        <Card>
+          <CardImage imgUrl={img} />
+          <CardContent>
+            <h2>Welcome</h2>
+            <Button isLoading={isLoading} color="blue">Foo</Button>
+            <Button handleClick={() => setIsLoading(!isLoading)} color="blue">Toggle</Button>
+            <IconButton isLoading={isLoading}>
+              <MaterialIcon icon="dashboard" />
+            </IconButton>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   );
 };
 
@@ -42,9 +37,10 @@ const mapStateToProps = state => ({
   loading: state.app.isLoading,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  getData,
-  clearData,
-}, dispatch);
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   getData,
+//   clearData,
+// }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
