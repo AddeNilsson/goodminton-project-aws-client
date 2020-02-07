@@ -6,7 +6,7 @@ const initialState = {
   },
   auth: {
     isAuthenticated: false,
-    user: {},
+    user: null,
   },
   mock: {
     data: null,

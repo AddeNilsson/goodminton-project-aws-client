@@ -9,6 +9,16 @@ export default (state = initialState.auth, action) => {
         isAuthenticated: true,
         user: action.payload,
       };
+      case types.GET_CURRENT_USER_SUCCESS:
+        if (typeof (action.payload) === 'string') {
+          // aws returning 'No Current User'
+          return { ...state };
+        }
+        return {
+          ...state,
+          user: action.payload,
+          isAuthenticated: true,
+        }
     default:
       return state;
   };

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 
-import { getData } from './actions/actions';
+import { getCurrentUser, signOutUser } from './actions/authActions';
 import Routes from './Routes';
 import AppHeader from './components/AppHeader';
 import Drawer from './components/Drawer';
@@ -14,12 +14,18 @@ import store from './store/store'
   store.dispatch(someInitialDataToRequest);
 */
 
-const App = ({ isLoading, getData }) => {
+const App = ({ isLoading, getCurrentUser, signOutUser }) => {
   const [drawerOpen, openDrawer] = useState(false);
+
+  useEffect(() => {
+    console.log('effect');
+    getCurrentUser();
+  }, [getCurrentUser]);
+
   return (
     <Router>
       <>
-        <AppHeader openDrawer={ () => openDrawer(true)}/>
+        <AppHeader openDrawer={ () => openDrawer(true)} signOutUser={signOutUser} />
         <Drawer open={drawerOpen} closeDrawer={() => openDrawer(false)}>
           <Navigation />
         </Drawer>
@@ -40,7 +46,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getData,
+  getCurrentUser,
+  signOutUser,
 }, dispatch)
 
 export default connect(

@@ -7,7 +7,7 @@ import Button from '../Button';
 import IconButton from '../IconButton';
 import './AppHeader.scss';
 
-const AppHeader = ({ user, openDrawer, signOut }) => {
+const AppHeader = ({ user, openDrawer, signOutUser }) => {
   console.log('TODO: disable state');
   return (
     <Grid row gutters classes="app-header text-white">
@@ -25,7 +25,7 @@ const AppHeader = ({ user, openDrawer, signOut }) => {
         </div>
         <Button
           disabled={false}
-          handleClick={signOut}
+          handleClick={signOutUser}
         >Sign Out</Button>
       </Grid>
     </Grid>
@@ -34,8 +34,8 @@ const AppHeader = ({ user, openDrawer, signOut }) => {
 
 AppHeader.propTypes = {
   user: PropTypes.object,
-  toggleDrawer: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired,
+  openDrawer: PropTypes.func.isRequired,
+  signOutUser: PropTypes.func.isRequired,
 };
 
 export default AppHeader;
