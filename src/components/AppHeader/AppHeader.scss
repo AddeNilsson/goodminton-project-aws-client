@@ -1,0 +1,12 @@
+@import '../../styles/_variables';
+
+.app-header {
+  height: $header-hight;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 0 8px;
+  background-color: $blue;
+  align-items: center;
+  box-sizing: border-box;
+}
