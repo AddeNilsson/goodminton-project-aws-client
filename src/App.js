@@ -18,7 +18,6 @@ const App = ({ isLoading, getCurrentUser, signOutUser }) => {
   const [drawerOpen, openDrawer] = useState(false);
 
   useEffect(() => {
-    console.log('effect');
     getCurrentUser();
   }, [getCurrentUser]);
 

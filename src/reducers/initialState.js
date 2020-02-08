@@ -7,6 +7,7 @@ const initialState = {
   auth: {
     isAuthenticated: false,
     user: null,
+    pendingConfirm: false,
   },
   mock: {
     data: null,

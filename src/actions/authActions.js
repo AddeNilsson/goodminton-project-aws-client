@@ -3,6 +3,8 @@ import {
   loginUserRequest,
   getCurrentUserRequest,
   signOutUserRequest,
+  signUpUserRequest,
+  confirmSignUpRequest,
 } from '../api/';
 
 export const loginUser = (payload) => {
@@ -11,6 +13,7 @@ export const loginUser = (payload) => {
 
     return loginUserRequest(payload)
       .then(data => {
+        console.log('then', data);
         dispatch(loginUserSuccess(data))
       })
       .catch(error => {
@@ -36,7 +39,6 @@ const loginUserFailure = error => ({
 
 export const getCurrentUser = () => (
   dispatch => {
-    console.log('dispacth cur user');
     dispatch(getCurrentUserRequested());
     return getCurrentUserRequest()
       .then(data =>{
@@ -64,7 +66,6 @@ const getCurrentUserFailure = error => ({
 
 export const signOutUser = () => (
   dispatch => {
-    console.log('dispacth cur user');
     dispatch(signOutUserRequested());
     return signOutUserRequest()
       .then(data =>{
@@ -88,3 +89,63 @@ const signOutUserFailure = error => ({
   type: types.SIGN_OUT_USER_FAILURE,
   payload: error,
 });
+
+export const signUpUser = (payload) => (
+  dispatch => {
+    dispatch(signUpUserRequested());
+    return signUpUserRequest(payload)
+      .then(data => {
+        dispatch(signUpUserSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(signUpUserFailure(error))
+      })
+  }
+);
+
+const signUpUserRequested = () => ({
+  type: types.SIGN_UP_USER_REQUESTED,
+});
+
+const signUpUserSuccess = data => ({
+  type: types.SIGN_UP_USER_SUCCESS,
+  payload: data,
+});
+
+const signUpUserFailure = error => ({
+  type: types.SIGN_UP_USER_FAILURE,
+  payload: error,
+});
+
+export const confirmSignUpAndLogIn = (payload) => (
+  dispatch => {
+    dispatch(confirmSignUpRequested());
+    return confirmSignUpRequest(payload)
+      .then(data => dispatch(confirmSignUpSuccess(data)))
+      .then(() =>  {
+        const { password, email } = payload;
+        dispatch(loginUser({ username: email, password}));
+      })
+      .catch((error) => {
+        dispatch(confirmSignUpFailure(error))
+      })
+  }
+);
+
+const confirmSignUpRequested = () => ({
+  type: types.CONFIRM_SIGN_UP_REQUESTED,
+});
+
+const confirmSignUpSuccess = data => ({
+  type: types.CONFIRM_SIGN_UP_SUCCESS,
+  payload: data,
+});
+
+const confirmSignUpFailure = error => ({
+  type: types.CONFIRM_SIGN_UP_FAILURE,
+  payload: error,
+});
+
+export const togglePendingConfirmAccount = () => ({
+  type: types.TOGGLE_PENDING_CONFIRM_ACCOUNT,
+})

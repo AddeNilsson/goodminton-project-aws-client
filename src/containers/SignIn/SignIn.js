@@ -15,7 +15,6 @@ const SignIn = ({ loginUser, isAuthenticated = false }) => {
   const { username, password } = fields;
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(username, password);
     loginUser({ username, password });
   }
   const isValid = () => (!(username.length > 5 && password.length > 7));
