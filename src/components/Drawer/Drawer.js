@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MaterialIcon from 'material-icons-react';
 
 import Backdrop from '../Backdrop';
 import Grid from '../Grid';
@@ -16,7 +15,7 @@ const Drawer = ({ open, closeDrawer, drawerTitle, children }) => {
             <Grid row gutters classes="drawer-header flex-align-center">
               <Grid xs={2}>
                 <IconButton handleClick={closeDrawer}>
-                  <MaterialIcon icon="close" color="#fff" />
+                  <i className="material-icons text-white">close</i>
                 </IconButton>
               </Grid>
               <Grid xs={10}>

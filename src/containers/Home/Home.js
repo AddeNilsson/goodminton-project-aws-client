@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import MaterialIcon from 'material-icons-react';
 
 import { getPlayerData, registerGame } from '../../actions'
 import { Card, CardContent, CardImage } from '../../components/Card';
@@ -9,6 +8,7 @@ import Grid from '../../components/Grid';
 import img from '../../assets/img/img.jpg';
 import Button from '../../components/Button';
 import PlayerDetails from '../../components/PlayerDetails';
+
 
 const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthenticated, register }) => {
   const error = '';
@@ -56,7 +56,8 @@ const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthentica
                   fullWidth
                   color="blue"
                 >
-                  <MaterialIcon icon="menu" /> Win
+                  <i className="material-icons text-white">sentiment_satisfied_alt</i>
+                   Win
                 </Button>
               </Grid>
               <Grid xs={12} sm={4}>
@@ -66,7 +67,7 @@ const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthentica
                   fullWidth
                   color="blue"
                 >
-                  <MaterialIcon icon="mood"/>Lost
+                <i className="material-icons text-white">sentiment_dissatisfied</i> Lost
                 </Button>
               </Grid>
               <Grid xs={12} sm={4}>
@@ -76,7 +77,7 @@ const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthentica
                   fullWidth
                   color="blue"
                 >
-                  <MaterialIcon icon="mood" /> Walkover
+                <i className="material-icons text-white">sentiment_very_dissatisfied</i> Walkover
                 </Button>
               </Grid>
             </Grid>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MaterialIcon from 'material-icons-react';
 
 import Grid from '../Grid';
 import Button from '../Button';
@@ -13,7 +12,7 @@ const AppHeader = ({ user, openDrawer, signOutUser }) => {
     <Grid row gutters classes="app-header text-white">
       <Grid xs={2} md={3}>
         <IconButton handleClick={openDrawer}>
-          <MaterialIcon icon="menu" color="#fff" />
+          <i className="material-icons text-white">menu</i>
         </IconButton>
       </Grid>
       <Grid md={6} classes="hide-md-down text-center">
