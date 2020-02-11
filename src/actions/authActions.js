@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes'
+
 import {
   loginUserRequest,
   getCurrentUserRequest,
@@ -7,13 +8,16 @@ import {
   confirmSignUpRequest,
 } from '../api/';
 
+import {
+  setInitialPlayerData,
+} from './player';
+
 export const loginUser = (payload) => {
   return dispatch => {
     dispatch(loginUserRequested())
 
     return loginUserRequest(payload)
       .then(data => {
-        console.log('then', data);
         dispatch(loginUserSuccess(data))
       })
       .catch(error => {
@@ -119,13 +123,12 @@ const signUpUserFailure = error => ({
 
 export const confirmSignUpAndLogIn = (payload) => (
   dispatch => {
+    const { password, email, username } = payload;
     dispatch(confirmSignUpRequested());
     return confirmSignUpRequest(payload)
       .then(data => dispatch(confirmSignUpSuccess(data)))
-      .then(() =>  {
-        const { password, email } = payload;
-        dispatch(loginUser({ username: email, password}));
-      })
+      .then(() => dispatch(loginUser({ username: email, password})))
+      .then((data) => dispatch(setInitialPlayerData({ username })))
       .catch((error) => {
         dispatch(confirmSignUpFailure(error))
       })

@@ -9,8 +9,15 @@ const initialState = {
     user: null,
     pendingConfirm: false,
   },
-  mock: {
-    data: null,
+  player: {
+    playerData: {
+      won: 0,
+      lost: 0,
+      wo: 0,
+      gamesTotal: 0,
+      winRatio: 0,
+      touched: 0,
+    },
   },
 };
 

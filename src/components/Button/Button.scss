@@ -1,6 +1,9 @@
 @import '../../styles/_variables';
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 12px;
   font-size: 1em;
   border: 1px solid #fff;
@@ -25,6 +28,10 @@
     background-color: $blue;
     &:hover {
       background-color: darken($blue, 5%);
+    }
+    i {
+      color: #fff;
+      margin: 0 4px 0 0;
     }
   }
   &.transparent {

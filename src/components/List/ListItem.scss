@@ -1,6 +1,9 @@
 @import '../../styles/_variables';
 
 li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
   padding: 12px 24px;
   position: relative;

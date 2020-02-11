@@ -15,7 +15,7 @@ const menuData = [
 const Navigation = ({ match, history }) => {
   const current = history.location.pathname;
   return (
-    <div id="nav">
+    <div id="nav" className="navigation">
       <List>
         {menuData.map(i => (
           <NavLink

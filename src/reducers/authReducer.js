@@ -4,11 +4,10 @@ import * as types from '../constants/actionTypes';
 export default (state = initialState.auth, action) => {
   switch (action.type) {
     case types.LOGIN_USER_SUCCESS: {
-      const { user } = action.payload;
         return {
           ...state,
           isAuthenticated: true,
-          user,
+          user: action.payload,
         };
       }
       case types.GET_CURRENT_USER_SUCCESS: {
@@ -21,11 +20,16 @@ export default (state = initialState.auth, action) => {
           isAuthenticated: true,
         }
       }
-      case types.SIGN_UP_USER_SUCCESS: {
-        const { user } = action.payload;
+      case types.SIGN_OUT_USER_SUCCESS: {
         return {
           ...state,
-          user,
+          user: null,
+          isAuthenticated: false,
+        }
+      }
+      case types.SIGN_UP_USER_SUCCESS: {
+        return {
+          ...state,
           pendingConfirm: true,
         };
       }

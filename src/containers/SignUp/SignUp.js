@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,7 +20,12 @@ const SignUp = ({ signUpUser, history, isAuthenticated, confirmSignUp, pendingCo
     passwordConfirm: '',
     confirmationCode: ''
   });
-  const { username, password, passwordConfirm, confirmationCode, email } = fields;
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/');
+    }
+  }, [isAuthenticated, history]);
+  const { username, password, confirmationCode, email } = fields;
 
   const handleSignUpSubmit = e => {
     e.preventDefault();
@@ -29,7 +34,7 @@ const SignUp = ({ signUpUser, history, isAuthenticated, confirmSignUp, pendingCo
 
   const handleConfirmationSubmit = e => {
     e.preventDefault();
-    confirmSignUp({ email, confirmationCode, password });
+    confirmSignUp({ email, confirmationCode, password, username });
   };
 
   return (

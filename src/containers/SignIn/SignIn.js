@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,9 +10,15 @@ import Grid from '../../components/Grid';
 import { Card, CardContent } from '../../components/Card';
 import Button from '../../components/Button';
 
-const SignIn = ({ loginUser, isAuthenticated = false }) => {
+const SignIn = ({ loginUser, isAuthenticated, history}) => {
   const [fields, setFields] = useFormFields({ username: '', password: '' });
   const { username, password } = fields;
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/');
+    }
+  }, [isAuthenticated, history]);
+
   const handleSubmit = e => {
     e.preventDefault();
     loginUser({ username, password });
@@ -76,7 +82,7 @@ SignIn.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated,
 })
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   loginUser
