@@ -25,7 +25,7 @@ import store from './store/store'
     - Have API return Attributes on PUT ?
 */
 
-const App = ({ isLoading, getCurrentUser, signOutUser }) => {
+const App = ({ isLoading, getCurrentUser, signOutUser, isAuthenticated }) => {
   const [drawerOpen, openDrawer] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,11 @@ const App = ({ isLoading, getCurrentUser, signOutUser }) => {
     <Router>
       <>
         <LoadingSpinner blocker active={isLoading} />
-        <AppHeader openDrawer={ () => openDrawer(true)} signOutUser={signOutUser} />
+        <AppHeader
+          openDrawer={() => openDrawer(true)}
+          signOutUser={signOutUser}
+          isAuthenticated={isAuthenticated}
+        />
         <Drawer open={drawerOpen} closeDrawer={() => openDrawer(false)}>
           <Navigation />
         </Drawer>
@@ -53,7 +57,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   isLoading: state.app.isLoading,
-  user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
