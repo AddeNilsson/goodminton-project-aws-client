@@ -1,35 +1,9 @@
 import * as types from '../constants/actionTypes';
 import {
-  setInitialPlayerDataRequest,
   getPlayerDataRequest,
   updatePlayerDataRequest,
+  getPlayersDataRequest,
 } from '../api/';
-
-export const setInitialPlayerData = (payload) => {
-  return dispatch => {
-    dispatch(setInitialPlayerDataRequested())
-    return setInitialPlayerDataRequest(payload)
-      .then(data => dispatch(setInitialPlayerDataSuccess(data)))
-      .catch(error => {
-        console.error(error);
-        dispatch(setInitialPlayerDataFailure('Failed set initial data'));
-      });
-  }
-}
-
-const setInitialPlayerDataRequested = () => ({
-  type: types.SET_INITIAL_PLAYER_DATA_REQUESTED,
-})
-
-const setInitialPlayerDataSuccess = (data) => ({
-  type: types.SET_INITIAL_PLAYER_DATA_SUCCESS,
-  payload: data,
-});
-
-const setInitialPlayerDataFailure = error => ({
-  type: types.SET_INITIAL_PLAYER_DATA_FAILURE,
-  payload: error,
-});
 
 export const getPlayerData = ({ id }) => {
   return dispatch => {
@@ -85,5 +59,31 @@ const updatePlayerDataSuccess = (data) => ({
 
 const updatePlayerDataFailure = error => ({
   type: types.UPDATE_PLAYER_DATA_FAILURE,
+  payload: error,
+});
+
+export const getPlayersData = () => {
+  return dispatch => {
+    dispatch(getPlayersDataRequested())
+    return getPlayersDataRequest()
+      .then(data => dispatch(getPlayersDataSuccess(data)))
+      .catch(error => {
+        console.error(error);
+        dispatch(getPlayersDataFailure(error));
+      });
+  }
+}
+
+const getPlayersDataRequested = () => ({
+  type: types.GET_PLAYERS_DATA_REQUESTED,
+})
+
+const getPlayersDataSuccess = (data) => ({
+  type: types.GET_PLAYERS_DATA_SUCCESS,
+  payload: data,
+});
+
+const getPlayersDataFailure = error => ({
+  type: types.GET_PLAYERS_DATA_FAILURE,
   payload: error,
 });

@@ -6,11 +6,8 @@ import {
   signOutUserRequest,
   signUpUserRequest,
   confirmSignUpRequest,
+  initialLoginRequest,
 } from '../api/';
-
-import {
-  setInitialPlayerData,
-} from './player';
 
 export const loginUser = (payload) => {
   return dispatch => {
@@ -123,12 +120,10 @@ const signUpUserFailure = error => ({
 
 export const confirmSignUpAndLogIn = (payload) => (
   dispatch => {
-    const { password, email, username } = payload;
     dispatch(confirmSignUpRequested());
     return confirmSignUpRequest(payload)
       .then(data => dispatch(confirmSignUpSuccess(data)))
-      .then(() => dispatch(loginUser({ username: email, password})))
-      .then((data) => dispatch(setInitialPlayerData({ username })))
+      .then(() => dispatch(doInitialLogIn(payload)))
       .catch((error) => {
         dispatch(confirmSignUpFailure(error))
       })
@@ -146,6 +141,31 @@ const confirmSignUpSuccess = data => ({
 
 const confirmSignUpFailure = error => ({
   type: types.CONFIRM_SIGN_UP_FAILURE,
+  payload: error,
+});
+
+const doInitialLogIn = (payload) => (
+  dispatch => {
+    dispatch(initialLoginRequested());
+    return initialLoginRequest(payload)
+      .then(data => dispatch(initialLoginSuccess(data)))
+      .catch((error) => {
+        dispatch(initialLoginFailure(error))
+      })
+  }
+);
+
+const initialLoginRequested = () => ({
+  type: types.INITIAL_LOGIN_REQUESTED,
+});
+
+const initialLoginSuccess = data => ({
+  type: types.INITIAL_LOGIN_SUCCESS,
+  payload: data,
+});
+
+const initialLoginFailure = error => ({
+  type: types.INITIAL_LOGIN_FAILURE,
   payload: error,
 });
 

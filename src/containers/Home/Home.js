@@ -8,7 +8,7 @@ import Grid from '../../components/Grid';
 import img from '../../assets/img/img.jpg';
 import Button from '../../components/Button';
 import PlayerDetails from '../../components/PlayerDetails';
-
+import LeaderBoard from '../../components/LeaderBoard';
 
 const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthenticated, register }) => {
   const error = '';
@@ -45,6 +45,7 @@ const Home =({ isLoading, playerData, getPlayerData, user, history, isAuthentica
             </Grid>
             <Grid item xs={12} md={5}>
               {/*<TopList setLoading={setLoading} rowLimit={4} />*/}
+              <LeaderBoard rowLimit={2} />
             </Grid>
           </Grid>
           <CardContent>

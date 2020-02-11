@@ -12,11 +12,8 @@ const ListItem = ({ children, dense, active, divider }) => {
   ].reduce((acc, cur) => (
     cur ? `${cur} ${acc}` : acc
   ), '');
-  console.log(classNames);
   return (
-    <li
-      className={classNames}
-    >
+    <li className={classNames}>
       { children }
     </li>
   );

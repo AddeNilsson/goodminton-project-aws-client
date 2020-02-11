@@ -17,7 +17,9 @@ const initialState = {
       gamesTotal: 0,
       winRatio: 0,
       touched: 0,
+      nickname: '',
     },
+    playersData: [],
   },
 };
 

@@ -6,11 +6,11 @@ import { List, ListItem } from '../List';
 import Button from '../Button';
 
 const PlayerDetails = ({
-  winRatio, won, lost, wo, gamesTotal, touched,
+  winRatio, won, lost, wo, gamesTotal, touched, nickname,
 }) => (
   <Card>
     <CardContent>
-      <h4>Stats for</h4>
+      <h4>Stats for { nickname }</h4>
     </CardContent>
     <List>
       <ListItem divider>
@@ -43,12 +43,12 @@ PlayerDetails.propTypes = {
   lost: PropTypes.number.isRequired,
   wo: PropTypes.number.isRequired,
   gamesTotal: PropTypes.number.isRequired,
-  username: PropTypes.string.isRequired,
-  touched: PropTypes.string,
+  nickname: PropTypes.string.isRequired,
+  touched: PropTypes.number.isRequired,
 };
 
-PlayerDetails.defaultProps = {
-  touched: '',
-};
+// PlayerDetails.defaultProps = {
+//   touched: '',
+// };
 
 export default PlayerDetails;

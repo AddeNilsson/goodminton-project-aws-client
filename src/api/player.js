@@ -5,8 +5,7 @@ export const setInitialPlayerDataRequest = async ({ username }) => {
   try {
     const playerData = await API.post('player', '/player', {
       body: {
-        username,
-        playerDataId: 'FOO',
+        nickname: username,
       },
     });
     return playerData;
@@ -26,6 +25,13 @@ export const updatePlayerDataRequest = async payload => {
 export const getPlayerDataRequest = async ({ id }) => {
   try {
     const playerData = await API.get('player', `/player/${id}`);
+    return playerData;
+  } catch (e) { throw e; }
+}
+
+export const getPlayersDataRequest = async () => {
+  try {
+    const playerData = await API.get('player', `/player`);
     return playerData;
   } catch (e) { throw e; }
 }

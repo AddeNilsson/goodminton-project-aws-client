@@ -9,6 +9,8 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import config from './config';
 
+import { getPlayersData } from './actions';
+
 Amplify.configure({
   Auth: {
     mandatorySignIn: true,
@@ -32,6 +34,21 @@ Amplify.configure({
     ]
   }
 });
+
+const stateProperty = (state) => {
+  return state.player.playerData.touched;
+}
+
+let current
+const onPlayerDataChange = () => {
+  let previous = current
+  current = stateProperty(store.getState())
+  if (previous < current) {
+    store.dispatch(getPlayersData());
+  }
+}
+
+store.subscribe(onPlayerDataChange);
 
 ReactDOM.render(
   <Provider store={store}>

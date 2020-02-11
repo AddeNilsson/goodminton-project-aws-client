@@ -3,6 +3,7 @@ import * as types from '../constants/actionTypes';
 
 export default (state = initialState.auth, action) => {
   switch (action.type) {
+    case types.INITIAL_LOGIN_SUCCESS:
     case types.LOGIN_USER_SUCCESS: {
         return {
           ...state,

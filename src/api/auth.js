@@ -1,4 +1,5 @@
 import { Auth } from 'aws-amplify';
+import { setInitialPlayerDataRequest } from './player';
 
 export const loginUserRequest = async (payload) => {
   const { username, password } = payload;
@@ -41,3 +42,12 @@ export const confirmSignUpRequest = async (payload) => {
     return;
   } catch (e) { throw e; }
 };
+
+export const initialLoginRequest = async payload => {
+  const { password, email, username  } = payload;
+  try {
+    const user = await loginUserRequest({ username: email, password });
+    await setInitialPlayerDataRequest({ username });
+    return user;
+  } catch (e) { throw e; }
+}

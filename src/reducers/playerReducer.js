@@ -1,15 +1,12 @@
 import initialState from './initialState';
 import * as types from '../constants/actionTypes';
 
+const sortByRatio = (a, b) => (
+  a.winRatio > b.winRatio ? 1 : a.winRatio < b.winRatio ? -1 : 0
+);
+
 export default (state = initialState.player, action) => {
   switch(action.type) {
-    case types.SET_INITIAL_PLAYER_DATA_SUCCESS: {
-      const { playerData } = action.payload;
-      return {
-        ...state,
-        playerData,
-      };
-    }
     case types.GET_PLAYER_DATA_SUCCESS: {
       return {
         ...state,
@@ -20,6 +17,14 @@ export default (state = initialState.player, action) => {
       return {
         ...state,
         playerData: action.payload,
+      };
+    }
+    case types.GET_PLAYERS_DATA_SUCCESS: {
+      const sorted = action.payload.sort(sortByRatio);
+      console.log(sorted);
+      return {
+        ...state,
+        playersData: action.payload,
       };
     }
     default: return state;
