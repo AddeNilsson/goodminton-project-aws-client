@@ -37,17 +37,17 @@ Amplify.configure({
 
 const stateProperty = (state) => {
   return state.player.playerData.touched;
-}
+};
 
-let current
+let current;
 const onPlayerDataChange = () => {
-  let previous = current
-  current = stateProperty(store.getState())
+  let previous = current;
+  current = stateProperty(store.getState());
   if (previous < current) {
     store.dispatch(getPlayersData());
   }
-}
-
+};
+// TODO: unsubscribe
 store.subscribe(onPlayerDataChange);
 
 ReactDOM.render(

@@ -2,7 +2,7 @@ import initialState from './initialState';
 import * as types from '../constants/actionTypes';
 
 const sortByRatio = (a, b) => (
-  a.winRatio > b.winRatio ? 1 : a.winRatio < b.winRatio ? -1 : 0
+  a.winRatio > b.winRatio ? -1 : a.winRatio < b.winRatio ? 1 : 0
 );
 
 export default (state = initialState.player, action) => {
@@ -26,6 +26,9 @@ export default (state = initialState.player, action) => {
         ...state,
         playersData: action.payload,
       };
+    }
+    case types.SIGN_OUT_USER_SUCCESS: {
+      return initialState.player;
     }
     default: return state;
   }

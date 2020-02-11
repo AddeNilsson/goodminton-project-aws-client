@@ -7,12 +7,12 @@ import ListItem from '../List/ListItem';
 import './Navigation.scss';
 
 const menuData = [
-  { path: '/', label: 'Home', activePath: ['/sign-in', '/dashboard'] },
+  { path: '/', label: 'Home', activePath: ['/sign-in', '/'] },
   { path: '/leaderboards', label: 'Leaderboards', activePath: ['/leaderboards'] },
   { path: '/about', label: 'About', activePath: ['/about'] },
 ];
 
-const Navigation = ({ match, history }) => {
+const Navigation = ({ match, history, handleDrawerClose }) => {
   const current = history.location.pathname;
   return (
     <div id="nav" className="navigation">
@@ -22,7 +22,7 @@ const Navigation = ({ match, history }) => {
             activeClassName="active"
             key={i.path}
             to={i.path}
-            // @click.native="$emit('onNavigate')"
+            onClick={handleDrawerClose}
           >
             <ListItem
               active={i.activePath.indexOf(current) !== -1}
@@ -35,7 +35,9 @@ const Navigation = ({ match, history }) => {
 };
 
 Navigation.propTypes = {
-
+  handleDrawerClose: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(Navigation);

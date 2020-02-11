@@ -1,35 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, CardContent } from '../Card';
-import { List, ListItem } from '../List';
-import Button from '../Button';
+import { Card } from '../Card';
+import { List, ListItem, ListHeader } from '../List';
 
 const PlayerDetails = ({
   winRatio, won, lost, wo, gamesTotal, touched, nickname,
 }) => (
   <Card>
-    <CardContent>
+    <ListHeader dense>
       <h4>Stats for { nickname }</h4>
-    </CardContent>
+    </ListHeader>
     <List>
-      <ListItem divider>
+      <ListItem dense divider>
         <p>Ratio: {winRatio}</p>
-        <div>
-          <Button color="blue" handleClick={() => false}>
-            Logs
-          </Button>
-        </div>
       </ListItem>
-      <ListItem divider>
+      <ListItem dense divider>
         <p>Won: {won}</p>
         <p>Lost: {lost}</p>
       </ListItem>
-      <ListItem divider>
+      <ListItem dense divider>
         <p>Wlk-overs: {wo}</p>
         <p>Games: {gamesTotal}</p>
       </ListItem>
-      <ListItem divider>
+      <ListItem dense divider>
         <p>Updated: {touched}</p>
       </ListItem>
     </List>
@@ -37,7 +31,6 @@ const PlayerDetails = ({
 );
 
 PlayerDetails.propTypes = {
-  setViewLogs: PropTypes.func.isRequired,
   winRatio: PropTypes.number.isRequired,
   won: PropTypes.number.isRequired,
   lost: PropTypes.number.isRequired,
@@ -46,9 +39,5 @@ PlayerDetails.propTypes = {
   nickname: PropTypes.string.isRequired,
   touched: PropTypes.number.isRequired,
 };
-
-// PlayerDetails.defaultProps = {
-//   touched: '',
-// };
 
 export default PlayerDetails;

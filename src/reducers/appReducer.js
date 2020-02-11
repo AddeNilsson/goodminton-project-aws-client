@@ -11,6 +11,7 @@ export default (state = initialState.app, action) => {
     case types.GET_PLAYER_DATA_REQUESTED:
     case types.GET_PLAYERS_DATA_REQUESTED:
     case types.INITIAL_LOGIN_REQUESTED:
+    case types.UPDATE_PLAYER_DATA_REQUESTED:
       return {
         ...state,
         loading: state.loading + 1,
@@ -24,6 +25,7 @@ export default (state = initialState.app, action) => {
     case types.GET_PLAYER_DATA_SUCCESS:
     case types.GET_PLAYERS_DATA_SUCCESS:
     case types.INITIAL_LOGIN_SUCCESS:
+    case types.UPDATE_PLAYER_DATA_SUCCESS:
       return {
         ...state,
         loading: state.loading - 1,
@@ -37,6 +39,7 @@ export default (state = initialState.app, action) => {
     case types.GET_PLAYER_DATA_FAILURE:
     case types.GET_PLAYERS_DATA_FAILURE:
     case types.INITIAL_LOGIN_FAILURE:
+    case types.UPDATE_PLAYER_DATA_FAILURE:
       let errors = [...state.errors, action.payload]
       return {
         ...state,

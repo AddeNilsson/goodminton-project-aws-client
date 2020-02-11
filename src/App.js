@@ -15,14 +15,10 @@ import store from './store/store'
   store.dispatch(someInitialDataToRequest);
 
   TODO:
-   - Fix setinitialPlayerData in api, data should be backend ,  ');
    - redirect after login: can be done with a wrapping route component
    - restructure separated account verify: we need pasw username email and veriication code here..
-   - remove username from create, add with attribute instead
-      await Auth.updateUserAttributes(user, {
-        'nickname / name': 'Adde',
-      });
-    - Have API return Attributes on PUT ?
+   - Error message handling
+   - Proptypes && eslint-airbnb
 */
 
 const App = ({ isLoading, getCurrentUser, signOutUser, isAuthenticated }) => {
@@ -42,7 +38,7 @@ const App = ({ isLoading, getCurrentUser, signOutUser, isAuthenticated }) => {
           isAuthenticated={isAuthenticated}
         />
         <Drawer open={drawerOpen} closeDrawer={() => openDrawer(false)}>
-          <Navigation />
+          <Navigation handleDrawerClose={() => openDrawer(false)}/>
         </Drawer>
         <main>
           <Routes />
