@@ -15,7 +15,7 @@ export const setInitialPlayerDataRequest = async ({ username }) => {
 export const updatePlayerDataRequest = async payload => {
   const { playerDataId } = payload;
   try {
-    const playerData = API.put('player', `/player/${playerDataId}`, {
+    const playerData = await API.put('player', `/player/${playerDataId}`, {
       body: payload
     });
     return playerData;

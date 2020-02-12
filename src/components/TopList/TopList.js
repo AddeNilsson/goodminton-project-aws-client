@@ -29,7 +29,7 @@ TopList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  playersData: state.player.playersData,
+  playersData: state.players.data,
 });
 
 export default connect(

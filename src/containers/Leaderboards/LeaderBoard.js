@@ -51,7 +51,7 @@ LeaderBoard.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  playersData: state.player.playersData,
+  playersData: state.players.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -19,7 +19,9 @@ const initialState = {
       touched: 0,
       nickname: '',
     },
-    playersData: [],
+  },
+  players: {
+    data: []
   },
 };
 
