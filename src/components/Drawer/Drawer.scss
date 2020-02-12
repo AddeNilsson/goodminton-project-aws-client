@@ -3,15 +3,17 @@
 .drawer {
   height: 100%;
   position: absolute;
+  left: 0;
+  top: 0;
   background-color: #fff;
   transition: width .45s ease-in-out;
   width: 0px;
-}
-.hide {
-  width: 0px;
-}
-.show {
-  width: $drawer-width;
+  &.hide {
+    width: 0px;
+  }
+  &.show {
+    width: $drawer-width;
+  }
 }
 .drawer-header {
   height: $header-hight;

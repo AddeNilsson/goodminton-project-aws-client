@@ -9,7 +9,7 @@ import './Drawer.scss';
 const Drawer = ({ open, closeDrawer, drawerTitle, children }) => {
   return (
     <Backdrop show={open}>
-      <div id="foo" className={`drawer ${open ? 'show' : 'hide'}`}>
+      <div className={`drawer ${open ? 'show' : 'hide'}`}>
         { open &&
           <>
             <Grid row gutters classes="drawer-header flex-align-center">
@@ -33,7 +33,14 @@ const Drawer = ({ open, closeDrawer, drawerTitle, children }) => {
 };
 
 Drawer.propTypes = {
+  closeDrawer: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  drawerTitle: PropTypes.string,
+  children: PropTypes.any.isRequired,
+};
 
+Drawer.defaultProps = {
+  title: '',
 };
 
 export default Drawer;
