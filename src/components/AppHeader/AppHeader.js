@@ -14,7 +14,7 @@ const AppHeader = ({ user, openDrawer, signOutUser, isAuthenticated }) => (
       </IconButton>
     </Grid>
     <Grid md={6} classes="hide-md-down text-center">
-      <h2>Vueminton Tracker</h2>
+      <h2>AWSminton Tracker</h2>
     </Grid>
     <Grid row xs={10} md={3} classes="flex-align-center justify-end">
       <div className="margin-side">

@@ -11,14 +11,12 @@ import Drawer from './components/Drawer';
 import Navigation from './components/Navigation';
 import LoadingSpinner from './components/LoadingSpinner';
 /*
-import store from './store/store'
-  store.dispatch(someInitialDataToRequest);
-
   TODO:
-   - redirect after login: can be done with a wrapping route component
+   - redirect after login: can be done better with a wrapping route component
    - restructure separated account verify: we need pasw username email and veriication code here..
    - Error message handling
    - Proptypes && eslint-airbnb
+   - continued work on logs / revert
 */
 
 const App = ({ isLoading, getCurrentUser, signOutUser, isAuthenticated }) => {
