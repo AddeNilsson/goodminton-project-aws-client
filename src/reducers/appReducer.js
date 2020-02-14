@@ -12,7 +12,7 @@ export default (state = initialState.app, action) => {
     case types.GET_PLAYERS_DATA_REQUESTED:
     case types.INITIAL_LOGIN_REQUESTED:
     case types.UPDATE_PLAYER_DATA_REQUESTED:
-    case types.CREATE_LOG_REQUESTED:
+    case types.CREATE_PLAYER_LOG_REQUESTED:
       return {
         ...state,
         loading: state.loading + 1,
@@ -20,13 +20,14 @@ export default (state = initialState.app, action) => {
       };
     case types.LOGIN_USER_SUCCESS:
     case types.GET_CURRENT_USER_SUCCESS:
+    case types.SIGN_OUT_USER_SUCCESS:
     case types.SIGN_UP_USER_SUCCESS:
     case types.CONFIRM_SIGN_UP_SUCCESS:
     case types.GET_PLAYER_DATA_SUCCESS:
     case types.GET_PLAYERS_DATA_SUCCESS:
     case types.INITIAL_LOGIN_SUCCESS:
     case types.UPDATE_PLAYER_DATA_SUCCESS:
-    case types.CREATE_LOG_SUCCESS:
+    case types.CREATE_PLAYER_LOG_SUCCESS:
       return {
         ...state,
         loading: state.loading - 1,
@@ -41,7 +42,7 @@ export default (state = initialState.app, action) => {
     case types.GET_PLAYERS_DATA_FAILURE:
     case types.INITIAL_LOGIN_FAILURE:
     case types.UPDATE_PLAYER_DATA_FAILURE:
-    case types.CREATE_LOG_FAILURE:
+    case types.CREATE_PLAYER_LOG_FAILURE:
       let errors = [...state.errors, action.payload]
       return {
         ...state,
@@ -49,8 +50,6 @@ export default (state = initialState.app, action) => {
         loading: state.loading - 1,
         isLoading: (state.loading - 1) > 0,
       };
-    case types.SIGN_OUT_USER_SUCCESS:
-      return initialState;
     default:
       return state
   };

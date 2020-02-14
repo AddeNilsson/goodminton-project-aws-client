@@ -14,6 +14,8 @@ export default (state = initialState.players, action) => {
         data: sorted,
       };
     }
+    case types.SIGN_OUT_USER_SUCCESS:
+      return initialState.players;
     default: return state;
   }
 }

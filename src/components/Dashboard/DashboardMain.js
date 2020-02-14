@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { CardContent } from '../Card';
 import Grid from '../Grid';
 import Button from '../Button';
-import { PlayerDetails } from './';
-import TopList from '../TopList';
+import PlayerDetails from './PlayerDetails';
+import TopList from '../../containers/TopList';
 
 const DashboardMain = ({
-  playerData, playerData: { nickname, winRatio }, error, handleViewLogs,
+  playerData, playerData: { nickname, winRatio }, error, handleViewLogs, playersData,
 }) => (
   <>
     <CardContent>
@@ -44,7 +44,7 @@ const DashboardMain = ({
           />
         </Grid>
         <Grid xs={12} md={5}>
-          <TopList rowLimit={4} />
+          <TopList rowLimit={4} playersData={playersData} />
         </Grid>
       </Grid>
     </CardContent>

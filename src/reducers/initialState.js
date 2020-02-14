@@ -23,6 +23,11 @@ const initialState = {
   players: {
     data: []
   },
+  logs: {
+    isLoading: false,
+    loading: 0,
+    playerLogs: [],
+  },
 };
 
 export default initialState;

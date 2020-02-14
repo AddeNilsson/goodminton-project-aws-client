@@ -10,7 +10,9 @@ const ButtonField = ({ handleRegister, gamesTotal, won, lost, wo, isLoading }) =
     <Grid classes="flex-wrap" row>
       <Grid xs={12} sm={4}>
         <Button
-          handleClick={() => handleRegister({ gamesTotal: gamesTotal + 1, won: won + 1 })}
+          handleClick={() => handleRegister({
+            gamesTotal: gamesTotal + 1, won: won + 1, state: 'win',
+          })}
           disabled={isLoading}
           fullWidth
           color="blue"
@@ -21,7 +23,9 @@ const ButtonField = ({ handleRegister, gamesTotal, won, lost, wo, isLoading }) =
       </Grid>
       <Grid xs={12} sm={4}>
         <Button
-          handleClick={() => handleRegister({ gamesTotal: gamesTotal + 1, lost: lost + 1 })}
+          handleClick={() => handleRegister({
+            gamesTotal: gamesTotal + 1, lost: lost + 1, state: 'lost',
+          })}
           disabled={isLoading}
           fullWidth
           color="blue"
@@ -31,7 +35,9 @@ const ButtonField = ({ handleRegister, gamesTotal, won, lost, wo, isLoading }) =
       </Grid>
       <Grid xs={12} sm={4}>
         <Button
-          handleClick={() => handleRegister({ gamesTotal: gamesTotal + 6, wo: wo + 1, lost: lost + 6 })}
+          handleClick={() => handleRegister({
+            gamesTotal: gamesTotal + 6, wo: wo + 1, lost: lost + 6, state: 'wo',
+          })}
           disabled={isLoading}
           fullWidth
           color="blue"

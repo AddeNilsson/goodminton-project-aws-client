@@ -5,6 +5,8 @@ import {
   getPlayersDataRequest,
 } from '../api/';
 
+import { createLog } from './';
+
 export const getPlayerData = ({ id }) => {
   return dispatch => {
     dispatch(getPlayerDataRequested())
@@ -31,16 +33,17 @@ const getPlayerDataFailure = error => ({
   payload: error,
 });
 
-export const registerGame = data => {
+export const registerGame = ({ newGameData, logEntry }) => {
   return (dispatch, getState) => {
     const { player: { playerData } } = getState();
     const payload = {
       ...playerData,
-      ...data,
+      ...newGameData,
     };
     dispatch(updatePlayerDataRequested())
     return updatePlayerDataRequest(payload)
       .then(data => dispatch(updatePlayerDataSuccess(data)))
+      .then(() => dispatch(createLog(logEntry)))
       .catch(e => {
         console.error(e);
         dispatch(updatePlayerDataFailure(e));

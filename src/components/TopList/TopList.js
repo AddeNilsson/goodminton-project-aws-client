@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { Card } from '../Card';
 import { List, ListItem, ListHeader } from '../List';
 
-const TopList = ({ playersData, getPlayersData, rowLimit }) => (
+const TopList = ({ playersData, rowLimit }) => (
   <Card>
     <ListHeader dense>
       <h4>Top { rowLimit }</h4>
@@ -14,7 +13,7 @@ const TopList = ({ playersData, getPlayersData, rowLimit }) => (
       { playersData
         .slice(0, rowLimit)
         .map(p => (
-          <ListItem divider dense key={p.userId}>
+          <ListItem divider dense key={p.key}>
             <p>{ p.nickname || 'anonyous' }</p>
             <p>{ p.winRatio }</p>
           </ListItem>
@@ -28,10 +27,4 @@ TopList.propTypes = {
   rowLimit: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = state => ({
-  playersData: state.players.data,
-});
-
-export default connect(
-  mapStateToProps,
-  null)(TopList);
+export default TopList

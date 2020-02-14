@@ -1,5 +1,3 @@
-import ButtonField from './ButtonField';
-import DashboardMain from './DashboardMain';
-import PlayerDetails from './PlayerDetails';
+import Dashboard from './Dashboard';
 
-export { ButtonField, DashboardMain, PlayerDetails };
+export default Dashboard;

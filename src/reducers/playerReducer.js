@@ -15,6 +15,8 @@ export default (state = initialState.player, action) => {
         playerData: action.payload,
       };
     }
+    case types.SIGN_OUT_USER_SUCCESS:
+      return initialState.player;
     default: return state;
   }
 }
