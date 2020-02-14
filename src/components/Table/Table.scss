@@ -18,4 +18,9 @@
   .dense {
     padding: 8px;
   }
+  tr {
+    &.dense > * {
+      padding: 8px;
+    }
+  }
 }

@@ -10,24 +10,26 @@ const Modal = ({
   show, closeModal, title, children, maxWidth,
 }) =>  (
   <div className="modal">
-    <Backdrop show={show} dark>
-      <div className={`modal-content max-width-${maxWidth} ${show ? 'show' : 'hide'}`}>
-        <Grid row gutters classes="modal-header flex-align-center">
-          <Grid xs={8}>
-            <h3>{ title }</h3>
+    <Backdrop show={show}>
+      <Grid row classes="modal-wrapper">
+        <div className={`modal-content max-width-${maxWidth} ${show ? 'show' : 'hide'}`}>
+          <Grid row gutters classes="modal-header flex-align-center">
+            <Grid xs={8}>
+              <h3>{ title }</h3>
+            </Grid>
+            <Grid xs={4}>
+              <div className="text-right">
+                <IconButton handleClick={closeModal}>
+                  <i className="material-icons">close</i>
+                </IconButton>
+              </div>
+            </Grid>
           </Grid>
-          <Grid xs={4}>
-            <div className="text-right">
-              <IconButton handleClick={closeModal}>
-                <i className="material-icons">close</i>
-              </IconButton>
-            </div>
-          </Grid>
-        </Grid>
-        <div className="modal-body">
-          { children }
+          <div className="modal-body">
+            { children }
+          </div>
         </div>
-      </div>
+      </Grid>
     </Backdrop>
   </div>
 );

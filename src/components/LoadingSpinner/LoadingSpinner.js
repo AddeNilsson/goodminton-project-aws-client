@@ -4,10 +4,10 @@ import Backdrop from '../Backdrop';
 import Grid from '../Grid';
 import './LoadingSpinner.scss';
 
-const Spinner = ({ active }) => (
+const Spinner = ({ active, color }) => (
   active && (
-    <Grid row classes="flex-center align-center">
-      <div className="ripple">
+    <Grid row classes="flex-center align-center spinner">
+      <div className={`ripple ${color === 'dark' ? 'border-dark' : 'border-white'}`}>
         <div />
         <div />
       </div>
@@ -15,11 +15,11 @@ const Spinner = ({ active }) => (
   )
 );
 
-const BlockingSpinner = ({ active }) => (
+const BlockingSpinner = ({ active, color }) => (
   active && (
     <Backdrop show={active} dark>
-      <Grid row classes="flex-center align-center">
-        <div className="ripple">
+      <Grid row classes="flex-center align-center block-spinner">
+        <div className="ripple border-white">
           <div />
           <div />
         </div>

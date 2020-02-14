@@ -1,5 +1,9 @@
 @import '../../styles/variables';
 .modal {
+  .modal-wrapper {
+    justify-content: center;
+    margin-top: 4em;
+  }
   .max-width-sm {
     flex-basis: 33%;
   }
