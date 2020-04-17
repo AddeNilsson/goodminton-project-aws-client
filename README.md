@@ -1,9 +1,14 @@
-This project's purpose is to be viewed upon as a badminton playing frontend developers way to get into Amazon Web Services.
+# Goodminton Project: AWS Client
 
-It's written in React with Redux and it is a rewrite of another application
+Creating the client with React & Redux and call the AWS API
 
-Another version, written in React with material-ui and firebase, is to be found [Here](https://github.com/Dopethroned/goodminton-tracker) and can be visited [Here](https://goodminton-tracker.firebaseapp.com/)
+---
+#### The Goodminton Project :boom:
+Writing a simple application in bunch of different ways using different technologies for the sake of learning.
 
-Yet another version written in Vue with firebase can be found [Here](https://github.com/Dopethroned/vueminton-tracker) and is deployed [Here](https://goodminton-dev.web.app/)
+The main application can be visited [Here](https://goodminton-tracker.firebaseapp.com) & several other versions is to be found among my [repositories](https://github.com/AddeNilsson)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
